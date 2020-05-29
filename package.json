@@ -1,0 +1,34 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "set:prod": "cp .config/prod.env .env",
+    "set:dev": "cp .config/dev.env .env"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "email-templates": "^7.0.4",
+    "email-templates-v2": "^2.0.3",
+    "es6-promise": "^4.2.8",
+    "express": "^4.17.1",
+    "handlebars": "^4.7.6",
+    "isomorphic-fetch": "^2.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.5.5",
+    "node-color-log": "^2.2.0",
+    "node-fetch": "^2.6.0",
+    "nodemailer": "2",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "pug": "^2.0.4",
+    "uuid": "^7.0.3"
+  }
+}
