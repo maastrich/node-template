@@ -18,37 +18,36 @@ var readHTMLFile = function (path, callback) {
 smtpTransport = nodemailer.createTransport(smtpTransport({
 	service: process.env.MAIL_SERVICE,
 	auth: {
-		user: process.env.EMAIL,
+		user: process.env.MAIL,
 		pass: process.env.PASS
 	}
 }));
 
-function register(req) {
+function signup(req) {
 	console.log(__dirname)
 	readHTMLFile(__dirname + '/mail/validation.html', function (err, html) {
 		var template = handlebars.compile(html);
 		var replacements = {
 			name: req.fname,
-			validation: process.env.VALIDATION + req.id,
+			validation: process.env.BACK + process.env.API + '/' + req._id.toString(),
 			website: process.env.WEBSITE,
 			team: process.env.TEAM,
 			city: process.env.CITY
 		};
 		var htmlToSend = template(replacements);
 		var mailOptions = {
-			from: process.env.EMAIL,
+			from: process.env.MAIL,
 			to: req.mail,
 			subject: `Please validate your email for ${process.env.PROJECT}`,
 			html: htmlToSend
 		};
 		smtpTransport.sendMail(mailOptions, function (error, response) {
 			if (error) {
+				console.log(error);
 				throw new Error('Unable to send verification link');
 			}
 		});
 	})
 }
 
-module.exports = {
-	register
-}
+module.exports = signup
