@@ -29,7 +29,7 @@ function signup(req) {
 		var template = handlebars.compile(html);
 		var replacements = {
 			name: req.fname,
-			validation: process.env.BACKEND + '/' + process.env.API_PATH + '/' + req._id.toString(),
+			validation: process.env.BACKEND + '/' + process.env.API_PATH + '/validation/' + req._id.toString(),
 			website: process.env.WEBSITE,
 			team: process.env.TEAM,
 			city: process.env.CITY
