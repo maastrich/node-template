@@ -25,7 +25,7 @@ async function signin(req, res, next) {
             throw new Error('Wrong Password');
         
         // Generate a token //
-        var token = jwt.sign({ id: user.id }, process.env.SECRET_TOKEN, {
+        var token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET, {
             expiresIn: 86400 // 24 hours
         });
         res.status(200).send({
