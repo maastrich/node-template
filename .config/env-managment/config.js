@@ -148,6 +148,9 @@ async function getEnv() {
         console.log(colors.yellow(input.var) + '=' + colors.blue(userInput) + '\n');
         writeFile(input.target, input.var, userInput);
     }
+    setTimeout({
+
+    }, 1000);
     // handle user input
     return 0;
 }
