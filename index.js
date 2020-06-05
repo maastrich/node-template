@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const db = require( './database' );
+const path  = require( 'path' );
+
 
 db.manageUser.getFrom.username(null);
 const app = express();
@@ -20,6 +22,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // simple route
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "documentation/pug"));
 app.get("/", (req, res) => {
   res.json({ message: "Wazaaaaa." });
 });

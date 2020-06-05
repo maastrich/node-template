@@ -1,7 +1,12 @@
 const db = require('../database');
 const utils = require( '../utils' );
 const mail = require( '../mail' );
-
+/**
+ * 
+ * @param {Express Request object} req 
+ * @param {Express Response Object} res 
+ * @param {Express Next Callback} next 
+ */
 async function signup(req, res, next) {
     try {
         await db.manageUser.add.user(req.body.user);
@@ -33,7 +38,7 @@ async function signup(req, res, next) {
         else {
             console.error(e);
             res.status(500).send({
-                error: e.toString()
+                error: 'Internal server error'
             });
         }
     }
