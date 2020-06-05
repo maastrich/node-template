@@ -1,62 +1,25 @@
+# Node Template
 
-# Template Back-End
+## Description
 
-Proceed to launch from the root of the project directory (see `Readme.md`).
+This node template has been made with heart, it is free to use but do not hesitate to send a little message.
+It is pretty simple to use, it only use simple technos.
 
-# Signup
-## Request Body
-### Type
-JSON string
-### Content
-```JSON
-user: {
-    "fname": //User's First Name,
-    "lname": //User's Last Name,
-    "username": // User's Username,
-    "mail": // User's E-Mail,
-    "password": // User's Password,
-}
-```
-### Response
-#### Code 409
+## Technos
 
-##### Body:
-###### Username AND Mail are already in registred:
-```JSON
-{
-    alreadyInUse: 'both',
-    error: 'Both Username and Email are already registred'
-}
-```
+### Database
+For the database, I choose to use [MongoDb](https://www.mongodb.com/), it is, for me, the simplest way to start with database. Really simple and fast to create a cluster and database. Must of all, it is FREE.
 
-###### Only user name is already in user:
-```JSON
-{
-    alreadyInUse: 'username',
-    error: 'Username already in use'
-}
-```
+### Language
+I choose [Node.JS](https://www.nodejs.org) for its simplicity and it's efficience.
 
-###### Only user name is already in user:
-```JSON
-{
-    alreadyInUse: 'mail',
-    error: 'Email already registred'
-}
-```
+### Server
+For the Server, it is implemented using [Express](https://expressjs.com/).
+It pretty easy to handle routes and to use.
 
-#### Code 500
-##### Body:
-```JSON
-{
-    error: 'Internal server error'
-}
-```
+## API
 
-#### Code 200
-##### Body:
-```JSON
-{
-    message: 'Successfully Register'
-}
-```
+|Route|Method|Documentation|
+|--|--|--|
+|/api/signin|POST|[https://github.com/PencilEater/node-template/blob/master/docs/Signin.md](https://github.com/PencilEater/node-template/blob/master/docs/Signin.md) |
+|/api/signup|POST| [https://github.com/PencilEater/node-template/blob/master/docs/Signup.md](https://github.com/PencilEater/node-template/blob/master/docs/Signup.md) |
