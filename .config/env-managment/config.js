@@ -148,16 +148,15 @@ async function getEnv() {
         console.log(colors.yellow(input.var) + '=' + colors.blue(userInput) + '\n');
         writeFile(input.target, input.var, userInput);
     }
-    await setTimeout(() => {
-        console.log(colors.green('Environment files have been generated !!'))
-    }, 1000);
-    // handle user input
     return 0;
 }
 
 async function main() {
     let env = await getEnv();
-    process.exit(env);
+    setTimeout(() => {
+        console.log(colors.green('Environment files have been generated !!'))
+        process.exit(env);
+    }, 1000);
 }
 
 main();
