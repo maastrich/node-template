@@ -1,6 +1,6 @@
 {
   "name": "node-template",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Template Node with Auth0",
   "main": "index.js",
   "repository": "https://github.com/PencilEater/node-template.git",
