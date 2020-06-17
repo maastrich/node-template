@@ -1,16 +1,15 @@
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
-
+const bcrypt = require( 'bcryptjs' );
 const dotenv = require( 'dotenv' );
 dotenv.config();
-
-async function mailValidation(id) {
+async function password(id, newPassword) {
     try {
         const client = await new MongoClient(process.env.DBURI, { useNewUrlParser: true, useUnifiedTopology: true }).connect();
-        const collection = await client.db(process.env.DB).collection("users");
+        const collection = client.db(process.env.DB).collection("users");
         await collection.updateOne(
             {"_id": mongodb.ObjectID(id)},
-            {$set: {validateMail: true}}
+            {$set: {password: bcrypt.hashSync(newPassword, 8)}}
         );
         client.close();
     }
@@ -21,4 +20,4 @@ async function mailValidation(id) {
     return true;
 }
 
-module.exports = mailValidation;
+module.exports = password;

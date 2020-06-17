@@ -11,6 +11,7 @@ async function mail(email) {
             if (doc.mail === email)
                 user = doc;
         })
+        client.close();
     }
     catch (e) {
         console.error(e);

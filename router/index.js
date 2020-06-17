@@ -8,6 +8,8 @@ const jwt = require('jsonwebtoken');
 require("es6-promise").polyfill();
 require("isomorphic-fetch");
 
+router.use("/update", profile.update);
+
 router.post("/signup", (req, res, next) => {
     signup(req, res, next);
 })
@@ -22,7 +24,7 @@ router.get("/validation/:id", (req, res, next) => {
 
 router.get('/profile', (req, res, next) => {
     const header = req.headers['authorization'];
-
+    
     if(typeof header !== 'undefined') {
         const bearer = header.split(' ');
         const token = bearer[1];
@@ -30,9 +32,8 @@ router.get('/profile', (req, res, next) => {
         req.token = token;
         profile.getData(req, res, next);
     } else {
-        //If header is undefined return Forbidden (403)
         console.log('Forbidden')
-        res.status(403).send('Forbidden');
+        res.status(403).send('Not signed in or invalid connection');
     }
 });
 

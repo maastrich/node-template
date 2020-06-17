@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-
+const update = require('./update')
 
 function getData(req, res, next) {
     //verify the JWT token generated for the user
@@ -12,7 +12,6 @@ function getData(req, res, next) {
             return;
         } else {
             //If token is successfully verified, we can send the autorized data 
-            authorizedData.user.password = null;
             res.status(200).send({
                 message: 'Successful log in',
                 authorizedData
@@ -25,5 +24,6 @@ function getData(req, res, next) {
 }
 
 module.exports = {
-    getData
+    getData,
+    update
 }

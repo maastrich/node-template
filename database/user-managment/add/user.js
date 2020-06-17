@@ -13,12 +13,17 @@ async function user(newUser) {
         if (mailInUse || usernameInUse)
             throw new Error('User already exist');
         const client = await new MongoClient(process.env.DBURI, { useNewUrlParser: true, useUnifiedTopology: true }).connect();
-        const collection = await client.db(process.env.DB).collection("users");
+        const database = client.db(process.env.DB)
+        const collection = await database.collection("users");
         newUser.password = bcrypt.hashSync(newUser.password, 8);
         newUser.validateMail = false;
         await collection.insertOne(newUser, (err) => {
-            if (err)
+            if (err) {
+                client.close();
                 throw err;
+            }
+            else
+                client.close();
         });
         return true;
     }

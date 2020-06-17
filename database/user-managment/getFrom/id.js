@@ -11,6 +11,7 @@ async function identifier(id) {
             if (doc.id === id)
                 user = doc;
         })
+        client.close();
     }
     catch (e) {
         console.error(e);
